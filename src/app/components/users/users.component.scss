@@ -1,0 +1,11 @@
+.usersContainer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    mat-form-field{
+        margin-top: 20px;
+    }
+    table{
+        width: 700px;
+    }
+}

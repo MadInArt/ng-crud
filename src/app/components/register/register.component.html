@@ -1,0 +1,31 @@
+<div class="main-div">
+    <mat-card>
+        <form [formGroup]="registerForm">
+            <mat-form-field >
+              <mat-label>Email</mat-label>
+              <input type="email" matInput formControlName="email" placeholder="your email">
+              <mat-error *ngIf="registerForm.get('email').hasError('email') && !registerForm.get('email').hasError('required')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="registerForm.get('email').hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input type="password" matInput formControlName="password" placeholder="your password">
+                <mat-error *ngIf="registerForm.get('password').hasError('required')">
+                  Password is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Repeat the password</mat-label>
+                <input type="password" matInput formControlName="repeatPassword" placeholder="repeat your password">
+                <mat-error *ngIf="registerForm.get('repeatPassword').hasError('required')">
+                  Password is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+              <button mat-raised-button  color="primary" type="submit">Login</button>
+          </form>
+        </mat-card>
+</div>

@@ -1,0 +1,15 @@
+<mat-toolbar color='primary'>
+    <div class="title_container"> 
+        <span>Angular CRUD app</span>
+    </div>
+    <div class="buttons_container">
+        <div *ngIf='!userToken'> 
+            <button mat-raised-button  routerLink=''>Login</button>
+            <button mat-raised-button  routerLink='register'>Register</button>
+        </div>
+        <div *ngIf='userToken'>
+            <button mat-raised-button  routerLink='' color="warn">Logout</button>
+            <button mat-raised-button  routerLink='dashboard'>Dashboard</button>
+        </div>
+    </div>    
+</mat-toolbar>
