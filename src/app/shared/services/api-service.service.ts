@@ -13,7 +13,7 @@ export class ApiServiceService {
       mode: 'no-cors'
     })
   }
-  __apiUrl = 'https://reqres.in/';
+  __apiUrl = 'https://reqres.in/api';
 
   constructor(private http: HttpClient) { }
 
