@@ -5,20 +5,23 @@
     align-items: center;
     mat-card{
         width: 300px;
-        height: 300px;
+        height: 440px;
         background-color:ivory;
         form{
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-        }
-        mat-form-field{
-            margin:5px;
-        }
-    
-            button{
-                margin-top:10px;
+            mat-form-field{
+                margin:28px;
             }
+            mat-error{
+                margin-top: 5px;
+            }
+        }
+        button{
+            margin-top:28px;
+        }
     }
+
 }
