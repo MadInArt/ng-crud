@@ -8,7 +8,7 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 import { AuthGuard } from './auth-guard.guard'
 
 const routes: Routes = [
-   {path: 'login',  component: LoginPageComponent},
+  {path: 'login',  component: LoginPageComponent},
   {path: 'register',  component: RegisterPageComponent},
   {path: 'dashboard',  component: DashboardPageComponent,  canActivate: [AuthGuard]}, 
   {path: '', pathMatch:'full', redirectTo:'login'},

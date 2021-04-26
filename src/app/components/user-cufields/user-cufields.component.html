@@ -1,0 +1,45 @@
+<div class="main-div">
+    <mat-card>
+        <form class="example-form" [formGroup]='form' (ngSubmit)="postUser(form)">
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>ID</mat-label>
+                    <input type="number" matInput  formControlName='id'>
+                    <mat-error *ngIf="form.get('email').hasError('required')">
+                      ID is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            
+                <mat-form-field class="example-full-width">
+                    <mat-label>First name</mat-label>
+                    <input type="text" matInput  formControlName='first_name'>
+                    <mat-error *ngIf="form.get('email').hasError('required')">
+                      First name is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            
+                <mat-form-field class="example-full-width">
+                    <mat-label>Last Name</mat-label>
+                    <input type="text" matInput  formControlName='last_name'>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput  formControlName='email'>
+                    <mat-error *ngIf="form.get('email').touched && form.get('email').invalid" >
+                      Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="form.get('email').hasError('required')">
+                      Email is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            
+                <mat-form-field class="example-full-width">
+                    <mat-label>Avatar</mat-label>
+                    <input type="text" matInput  formControlName='avatar'>
+                </mat-form-field>
+                
+          <button mat-raised-button  color="primary" type="submit" [disabled]='form.invalid'>Post user</button>
+          </form>
+        </mat-card>
+</div>

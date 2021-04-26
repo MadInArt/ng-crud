@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthServiceService } from '../../shared/services/auth-service.service';
 
@@ -21,13 +21,10 @@ export class LoginComponent implements OnInit{
       ]),
       password: new FormControl('',[
         Validators.required,
-        Validators.minLength(8),
+        Validators.minLength(6),
       ])
      })
 
-     if (this.authService.isLogged()) {
-      this.router.navigate(['/dashboard']);
-    }
   }
   login(form: FormGroup) {
     this.error = '';
@@ -39,6 +36,6 @@ export class LoginComponent implements OnInit{
             res => this.router.navigate(['/dashboard']),
             err => (this.error = err.error.error)
         );
-}
+  }
 }
 

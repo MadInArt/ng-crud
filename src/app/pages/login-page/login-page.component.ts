@@ -10,7 +10,6 @@ export class LoginPageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-   console.log(window.location.pathname)
   }
 
 }

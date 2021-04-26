@@ -12,13 +12,14 @@ import { ApiServiceService } from './api-service.service';
 })
 
 export class AuthServiceService {
+ 
 
 
   constructor(private httpClient: HttpClient, private router: Router, private apiService : ApiServiceService) { }
 
      
 
-      login(username: string, password: string) {
+    login(username: string, password: string) {
       const request = this.httpClient.post('https://reqres.in/api/login', {
           username,
           password
@@ -26,7 +27,17 @@ export class AuthServiceService {
       request.subscribe((res: any) => this.setToken(res.token));
       this.router.navigate(['/dashboard']);
       return request;
-  }
+    }
+    register(username: string, password: string) {
+      const request = this.httpClient.post('https://reqres.in/api/register', {
+          username,
+          password
+      });
+      request.subscribe((res: any) => this.setToken(res.token));
+      this.router.navigate(['/dashboard']);
+      return request;
+    }
+
 
   // login(): Observable<Auth>{
 
@@ -39,15 +50,14 @@ export class AuthServiceService {
   //   return request;
   // }
 
-     logout() {
+    logout() {
       localStorage.removeItem('token');
       this.router.navigate(['']);
-      }
-
-     setToken(token: string) {
+    }
+    setToken(token: string) {
       localStorage.setItem('token', token);
     }
-     getToken() {
+    getToken() {
       return localStorage.getItem('token');
     }
     isLogged() {

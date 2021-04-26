@@ -15,6 +15,7 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
+import { UserCUfieldsComponent } from './components/user-cufields/user-cufields.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.co
     RegisterPageComponent,
     LoginPageComponent,
     ErrorPageComponent,
-    DashboardPageComponent
+    DashboardPageComponent,
+    UserCUfieldsComponent
   ],
   imports: [
     BrowserModule,
