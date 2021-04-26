@@ -3,12 +3,12 @@
         <span>Angular CRUD app</span>
     </div>
     <div class="buttons_container">
-        <div *ngIf='!userToken'> 
+        <div *ngIf='!isLogged'> 
             <button mat-raised-button  routerLink=''>Login</button>
             <button mat-raised-button  routerLink='register'>Register</button>
         </div>
-        <div *ngIf='userToken'>
-            <button mat-raised-button  routerLink='' color="warn">Logout</button>
+        <div *ngIf='isLogged'>
+            <button mat-raised-button  routerLink='' color="warn" (click)='onLogout()'>Logout</button>
             <button mat-raised-button  routerLink='dashboard'>Dashboard</button>
         </div>
     </div>    

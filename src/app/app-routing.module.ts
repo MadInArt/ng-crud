@@ -8,11 +8,10 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 import { AuthGuard } from './auth-guard.guard'
 
 const routes: Routes = [
-  {path: '', pathMatch:'full', redirectTo:'login'},
-  {path: 'login',  component: LoginPageComponent},
+   {path: 'login',  component: LoginPageComponent},
   {path: 'register',  component: RegisterPageComponent},
-  {path: 'dashboard',  component: DashboardPageComponent}, 
-  // add canActivate:[AuthGuard] to protect dashboard from unathorized access
+  {path: 'dashboard',  component: DashboardPageComponent,  canActivate: [AuthGuard]}, 
+  {path: '', pathMatch:'full', redirectTo:'login'},
   {path: '**', component: ErrorPageComponent},
 ];
 
@@ -21,3 +20,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { } 
+

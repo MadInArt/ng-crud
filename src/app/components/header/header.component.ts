@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AuthServiceService } from '../../shared/services/auth-service.service'
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -7,11 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  userToken = false; // to display navigation buttons depends on token availability, set by default token to false, after login set it to true. Loggin out setting token back to false.
-  
-  constructor() { }
+  constructor(private authService : AuthServiceService){}
 
+  isLogged = this.authService.isLogged();
+  
   ngOnInit(): void {
+
+  }
+  
+  onLogout(){
+    this.authService.logout()
   }
 
 }

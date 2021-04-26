@@ -21,7 +21,8 @@ export class ApiServiceService {
     this.httpOptions["params"] = params
     return this.http.get<any>(this.__apiUrl +  url, this.httpOptions)
   }
-  delete(url: string){
+  delete(url: string, params = {}){
+      this.httpOptions["params"] = params
       return this.http.delete(this.__apiUrl +  url,  this.httpOptions)
   }
   post(url: string, body: any ){
