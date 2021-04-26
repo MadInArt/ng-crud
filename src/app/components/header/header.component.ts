@@ -6,11 +6,13 @@ import { AuthServiceService } from '../../shared/services/auth-service.service'
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+ 
   constructor(private authService : AuthServiceService){}
 
-  isLogged = this.authService.isLogged();
-  
+  // isLogged = this.authService.isLogged();
+  get isToken():boolean{
+    return this.authService.isToken;
+  }
   ngOnInit(): void {
 
   }

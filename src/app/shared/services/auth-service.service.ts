@@ -14,7 +14,7 @@ import { ApiServiceService } from './api-service.service';
 export class AuthServiceService {
  
 
-
+  isToken: boolean;
   constructor(private httpClient: HttpClient, private router: Router, private apiService : ApiServiceService) { }
 
      
@@ -26,7 +26,9 @@ export class AuthServiceService {
       });
       request.subscribe((res: any) => this.setToken(res.token));
       this.router.navigate(['/dashboard']);
+      this.isToken = true;
       return request;
+ 
     }
     register(username: string, password: string) {
       const request = this.httpClient.post('https://reqres.in/api/register', {
@@ -35,7 +37,9 @@ export class AuthServiceService {
       });
       request.subscribe((res: any) => this.setToken(res.token));
       this.router.navigate(['/dashboard']);
+      this.isToken = true;
       return request;
+  
     }
 
 
@@ -52,6 +56,7 @@ export class AuthServiceService {
 
     logout() {
       localStorage.removeItem('token');
+      this.isToken = false;
       this.router.navigate(['']);
     }
     setToken(token: string) {
@@ -62,6 +67,6 @@ export class AuthServiceService {
     }
     isLogged() {
       return this.getToken() !== null;
-  }
+    }
 
 }
