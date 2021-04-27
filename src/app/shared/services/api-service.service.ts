@@ -21,7 +21,7 @@ export class ApiServiceService {
     this.httpOptions["params"] = params
     return this.http.get<any>(this.__apiUrl +  url, this.httpOptions)
   }
-  delete(url: string, params = {}){
+  delete(url: string, params = {}): Observable<any>{
       this.httpOptions["params"] = params
       return this.http.delete(this.__apiUrl +  url,  this.httpOptions)
   }

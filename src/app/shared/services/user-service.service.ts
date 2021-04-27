@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiServiceService } from './api-service.service'
-import {  Users } from '../models/user.model'
+import {  Users, User } from '../models/user.model'
 import { HttpClient } from '@angular/common/http';  
 
 
@@ -11,13 +11,16 @@ import { HttpClient } from '@angular/common/http';
 
 export class UserServiceService {
 
-  constructor(private http: HttpClient, private apiService : ApiServiceService) { }
+  // userList$ 
+  constructor(private httpClient: HttpClient, private apiService : ApiServiceService) { }
 
   getUsers(): Observable<Users>{
-    return this.apiService.get('/users?page=2')
+    return this.apiService.get('/users?page=2').pipe()
   }
-  // deleteUsers():Observable<Users>{
-  //   const url = `users/${id}`
-  //   return this.apiService.delete('/users/${user.data.id}')
-  // }
+  deleteUsers(userId: number): Observable<Users>{
+    return this.apiService.delete(`/users/${userId}`).pipe()
+  }
+  postUsers(data: User):Observable<any>{
+    return this.apiService.post('/users?page=2', data)
+  }
 }
