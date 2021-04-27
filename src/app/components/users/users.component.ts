@@ -5,13 +5,14 @@ import {MatTableDataSource} from '@angular/material/table';
 import { User, Users } from 'src/app/shared/models/user.model';
 import { UserServiceService } from 'src/app/shared/services/user-service.service';
 
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  
+  choosedUser
   users: User[] = [];
   displayedColumns: string[] = ['id', 'first_name', 'last_name', 'email', 'avatar', 'deltebtn', 'updatebtn'];
   dataSource: MatTableDataSource<User>;
@@ -24,6 +25,7 @@ export class UsersComponent implements OnInit {
   
   }
 
+  user:any;
 
   ngOnInit(){
 
@@ -41,6 +43,10 @@ export class UsersComponent implements OnInit {
  }
    onUserDelete(user){
        this.userService.deleteUsers(user)
+  }
+    onUserUpdate(user){
+    this.userService.formStatus.subscribe(user => this.user = user)
+     
   }
 }
 

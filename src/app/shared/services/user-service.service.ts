@@ -1,3 +1,4 @@
+import { Users } from './../models/user.model';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ApiServiceService } from './api-service.service'
@@ -16,9 +17,11 @@ export class UserServiceService {
   
     usersList: User[] = [];
     private usersListSub: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
-  
     currentData = this.usersListSub.asObservable();
  
+    private formStatusSub: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
+    currentFormStatus = this.formStatusSub.asObservable();
+
     getUsersList(): BehaviorSubject<User[]>{
       return this.usersListSub;
     }
@@ -56,5 +59,8 @@ export class UserServiceService {
       console.log("userService post", updatedUser)
     })).subscribe()
 
+  }
+  formStatus(data : User): void{
+    this.formStatusSub.next(data)
   }
 }
