@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, ReplaySubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { ApiServiceService } from './api-service.service'
-import {  Users, User } from '../models/user.model'
-import { map, tap } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import { User } from '../models/user.model'
+import { tap } from 'rxjs/operators';
+
 
 
 @Injectable({
@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class UserServiceService {
 
-  constructor(private apiService : ApiServiceService, private httpClient: HttpClient) { }
+  constructor(private apiService : ApiServiceService) { }
   
     usersList: User[] = [];
     private usersListSub: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
@@ -45,6 +45,15 @@ export class UserServiceService {
       newUserList.push(newUser) 
       this.usersListSub.next(newUserList)
       console.log("userService post", newUser)
+    })).subscribe()
+
+  }
+  updateUsers(data: User): void{
+    this.apiService.put('/users?page=2', data).pipe(tap((updatedUser: User) =>{ 
+      const newUserList = this.usersListSub.getValue();
+      newUserList.push(updatedUser) 
+      this.usersListSub.next(newUserList)
+      console.log("userService post", updatedUser)
     })).subscribe()
 
   }

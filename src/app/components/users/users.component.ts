@@ -13,7 +13,7 @@ import { UserServiceService } from 'src/app/shared/services/user-service.service
 export class UsersComponent implements OnInit {
   
   users: User[] = [];
-  displayedColumns: string[] = ['id', 'first_name', 'last_name', 'email', 'avatar', 'deltebtn'];
+  displayedColumns: string[] = ['id', 'first_name', 'last_name', 'email', 'avatar', 'deltebtn', 'updatebtn'];
   dataSource: MatTableDataSource<User>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

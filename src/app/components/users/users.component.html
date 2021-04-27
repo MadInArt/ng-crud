@@ -35,10 +35,14 @@
     </ng-container>
 
     <ng-container matColumnDef="deltebtn">
-         <th mat-header-cell *matHeaderCellDef> Delete </th>
-         <td mat-cell *matCellDef="let user">  <button mat-raised-button color="warn" (click)='onUserDelete(user)'>Delete</button> </td>
+         <th mat-header-cell *matHeaderCellDef>  </th>
+         <td mat-cell *matCellDef="let user">  <mat-icon (click)='onUserDelete(user)'>delete</mat-icon>  </td>
     </ng-container>
 
+    <ng-container matColumnDef="updatebtn">
+      <th mat-header-cell *matHeaderCellDef>  </th>
+      <td mat-cell *matCellDef="let user"> <mat-icon (click)='onUserUpdate(user)'>edit</mat-icon> </td>
+  </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let user; columns: displayedColumns;"></tr>

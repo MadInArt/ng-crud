@@ -32,7 +32,8 @@ export class UserCUfieldsComponent implements OnInit {
       this.userService.postUsers(data.value)
       this.form.reset();
     }
-
-    
-
+    onUserUpdate(data){
+      this.userService.updateUsers(data.value)
+      this.form.reset();
+    }
   }

@@ -16,9 +16,14 @@
         mat-form-field{
             margin:15px;
         }
-    
+        .buttonsContainer{
+            display: flex;
+
             button{
-                margin-top:15px;
+                margin:15px;
             }
+        }
+    
+         
     }
 }
