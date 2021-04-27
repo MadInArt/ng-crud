@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { Router } from '@angular/router'
-
-import {Auth, Token } from '../models/auth.model'
 import { ApiServiceService } from './api-service.service';
 
 
@@ -43,17 +40,7 @@ export class AuthServiceService {
     }
 
 
-  // login(): Observable<Auth>{
-
-  //   const request = this..post('/login',
-  //   {
-      
-  //   });
-  //   request.subscribe((res: Token)  => this.setToken(res.token));
-  //   this.router.navigate(['/dashboard']);
-  //   return request;
-  // }
-
+  
     logout() {
       localStorage.removeItem('token');
       this.isToken = false;

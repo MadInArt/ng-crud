@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {  Users } from 'src/app/shared/models/user.model';
@@ -28,7 +29,8 @@ export class UserCUfieldsComponent implements OnInit {
     });
   }
     onUserPost(data){
-      this.userService.postUsers(data.value).subscribe((res: Users) => console.log(res))
+      this.userService.postUsers(data.value)
+      this.form.reset();
     }
 
     

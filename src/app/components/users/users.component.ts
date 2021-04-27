@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
@@ -11,7 +11,7 @@ import { UserServiceService } from 'src/app/shared/services/user-service.service
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  id: User["id"];
+  
   users: User[] = [];
   displayedColumns: string[] = ['id', 'first_name', 'last_name', 'email', 'avatar', 'deltebtn'];
   dataSource: MatTableDataSource<User>;
@@ -24,22 +24,23 @@ export class UsersComponent implements OnInit {
   
   }
 
-  ngOnInit(){
-    this.userService.getUsers().subscribe((res: Users) => {
-      this.users = res.data;
-      console.log(this.users);
 
+  ngOnInit(){
+
+    this.userService.getUsers();
+
+    this.userService.getUsersList().subscribe(userList => {
+      this.users = userList;
       this.dataSource = new MatTableDataSource(this.users);
       this.dataSource.sort = this.sort;
-
-    })
+    });
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
  }
-   onUserDelete(user: User){
-    this.userService.deleteUsers(user.id).subscribe((res: Users) => console.log("You've removed" , res))
-   }
+   onUserDelete(user){
+       this.userService.deleteUsers(user)
+  }
 }
 
