@@ -40,14 +40,23 @@ export class AuthServiceService {
       this.router.navigate(['']);
     }
     setToken(token: string) {
+    
       localStorage.setItem('token', token);
     }
     getToken() {
-        return localStorage.getItem('token');
+        if(localStorage.getItem('token')){
+          this.isToken = true;
+          return localStorage.getItem('token')
+        }else{
+          this.isToken = false;
+          return localStorage.getItem('token')
+          
+        }
+      
       
     }
     isLogged() {
-      this.isToken = true;
+     
       return this.getToken() !== null;
       
     }
