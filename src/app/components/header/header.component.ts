@@ -13,8 +13,9 @@ export class HeaderComponent implements OnInit {
   get isToken():boolean{
     return this.authService.isToken;
   }
-  ngOnInit(): void {
 
+  ngOnInit(): void {
+ 
   }
 
   onLogout(){

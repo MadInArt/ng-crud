@@ -51,16 +51,17 @@ export class UserServiceService {
     })).subscribe()
 
   }
-  updateUsers(data: User): void{
-    this.apiService.put('/users?page=2', data).pipe(tap((updatedUser: User) =>{ 
-      const newUserList = this.usersListSub.getValue();
-      newUserList.push(updatedUser) 
+  updateUsers(updatedUserData: User): void{
+    this.apiService.put('/users?page=2', updatedUserData).pipe(tap((updatedUser: User) =>{ 
+      let newUserList = this.usersListSub.getValue();
+      let foundIndex = newUserList.findIndex(u=>u.id == updatedUserData.id);
+      newUserList[foundIndex] = updatedUser;
       this.usersListSub.next(newUserList)
-      console.log("userService post", updatedUser)
+      console.log("userService update", updatedUser)
     })).subscribe()
 
   }
-  formStatus(data : User): void{
-    this.formStatusSub.next(data)
+  formStatus(data : Users): void{
+    this.formStatusSub.next(data.data)
   }
 }

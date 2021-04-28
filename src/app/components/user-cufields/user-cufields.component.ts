@@ -9,7 +9,9 @@ import { UserServiceService } from 'src/app/shared/services/user-service.service
   styleUrls: ['./user-cufields.component.scss']
 })
 export class UserCUfieldsComponent implements OnInit {
+  updatedUserData;
   form: FormGroup;
+  isEdit: boolean;
   constructor(private userService: UserServiceService) { }
 
   ngOnInit(): void {
@@ -31,9 +33,28 @@ export class UserCUfieldsComponent implements OnInit {
     onUserPost(data){
       this.userService.postUsers(data.value)
       this.form.reset();
+      this.isEdit = false;
     }
-    onUserUpdate(data){
-      this.userService.updateUsers(data.value)
-      this.form.reset();
-    }
+
+    setUpdateUser(data){
+      this.form.setValue({
+        email: data.email,
+        first_name: data.first_name,
+        last_name: data.last_name,
+        id: data.id,
+        avatar: data.avatar,
+      })
+     
+      this.isEdit = true;
+     
+
+   
   }
+  onUserUpdate(){
+    this.updatedUserData = this.form.value;
+    this.userService.updateUsers(this.updatedUserData);
+    this.isEdit = false;
+    this.form.reset()
+
+  }
+}

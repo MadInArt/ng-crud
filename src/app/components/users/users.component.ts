@@ -1,10 +1,10 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
+import { Component, Input, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { User, Users } from 'src/app/shared/models/user.model';
 import { UserServiceService } from 'src/app/shared/services/user-service.service';
-
+import { UserCUfieldsComponent } from '../user-cufields/user-cufields.component';
 
 @Component({
   selector: 'app-users',
@@ -12,7 +12,8 @@ import { UserServiceService } from 'src/app/shared/services/user-service.service
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  choosedUser
+  @Input() myForm: UserCUfieldsComponent;
+  updatedData: User [] = [] ;
   users: User[] = [];
   displayedColumns: string[] = ['id', 'first_name', 'last_name', 'email', 'avatar', 'deltebtn', 'updatebtn'];
   dataSource: MatTableDataSource<User>;
@@ -21,11 +22,7 @@ export class UsersComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private userService: UserServiceService) {
-     
-  
   }
-
-  user:any;
 
   ngOnInit(){
 
@@ -44,9 +41,9 @@ export class UsersComponent implements OnInit {
    onUserDelete(user){
        this.userService.deleteUsers(user)
   }
-    onUserUpdate(user){
-    this.userService.formStatus.subscribe(user => this.user = user)
-     
-  }
+  onUserUpdate(data): void{ 
+    this.myForm.setUpdateUser(data)
+
+   }
 }
 

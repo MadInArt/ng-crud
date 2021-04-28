@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { UserCUfieldsComponent } from 'src/app/components/user-cufields/user-cufields.component';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardPageComponent implements OnInit {
 
+  @ViewChild('myForm') myForm: UserCUfieldsComponent;
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.myForm)
   }
 
 }

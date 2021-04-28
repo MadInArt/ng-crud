@@ -23,10 +23,8 @@ export class AuthServiceService {
       });
       request.subscribe((res: any) => this.setToken(res.token));
       this.router.navigate(['/dashboard']);
-      this.isToken = true;
-      return request;
- 
-    }
+       return request;
+     }
     register(username: string, password: string) {
       const request = this.httpClient.post('https://reqres.in/api/register', {
           username,
@@ -34,13 +32,8 @@ export class AuthServiceService {
       });
       request.subscribe((res: any) => this.setToken(res.token));
       this.router.navigate(['/dashboard']);
-      this.isToken = true;
       return request;
-  
-    }
-
-
-  
+      }
     logout() {
       localStorage.removeItem('token');
       this.isToken = false;
@@ -50,10 +43,13 @@ export class AuthServiceService {
       localStorage.setItem('token', token);
     }
     getToken() {
-      return localStorage.getItem('token');
+        return localStorage.getItem('token');
+      
     }
     isLogged() {
+      this.isToken = true;
       return this.getToken() !== null;
+      
     }
 
 }

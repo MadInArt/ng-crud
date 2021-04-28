@@ -1,4 +1,4 @@
 <div class="dashboard_container">
-    <app-user-cufields></app-user-cufields>
-    <app-users></app-users>
+    <app-user-cufields #myForm></app-user-cufields>
+    <app-users  [myForm]="myForm"></app-users>
 </div>

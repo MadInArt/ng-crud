@@ -2,7 +2,7 @@
     <mat-card>
         <form class="example-form" [formGroup]='form'>
 
-                <mat-form-field class="example-full-width">
+                <mat-form-field class="example-full-width" *ngIf='!isEdit'>
                     <mat-label>ID</mat-label>
                     <input type="number" matInput  formControlName='id'>
                     <mat-error *ngIf="form.get('email').hasError('required')">
@@ -40,8 +40,8 @@
                 </mat-form-field>
                 
             <div class="buttonsContainer">
-                <button mat-raised-button  color="primary" type="submit" [disabled]='form.invalid' (click)="onUserPost(form)">Post user</button>
-                <button mat-raised-button  color="primary" type="submit" [disabled]='form.invalid' (click)="onUserUpdate(form)">Update user</button>
+                <button *ngIf='!isEdit' mat-raised-button  color="primary" type="submit" [disabled]='form.invalid' (click)="onUserPost(form)">Post user</button>
+                <button *ngIf='isEdit' mat-raised-button  color="primary" type="submit" [disabled]='form.invalid' (click)="onUserUpdate(form)">Update user</button>
             </div>
           </form>
         </mat-card>
